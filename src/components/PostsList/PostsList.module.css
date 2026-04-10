@@ -1,0 +1,37 @@
+.postsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.postItem {
+  background: white;
+  padding: 1.5rem;
+  border-left: 3px solid rgb(255, 119, 17);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.postTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: rgb(44, 51, 59);
+}
+
+.postBody {
+  color: #607788;
+  line-height: 1.5;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error {
+  color: rgb(255, 119, 17);
+}

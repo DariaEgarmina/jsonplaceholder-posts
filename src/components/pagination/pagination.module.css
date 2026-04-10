@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e5e5;
+  background: white;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button:hover {
+  background: #f5f5f5;
+}
+
+.active {
+  background: rgb(255, 119, 17);
+  color: white;
+  border-color: rgb(255, 119, 17);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

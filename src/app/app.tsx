@@ -1,65 +1,29 @@
-import { useState, useEffect } from "react";
-import styles from "./app.module.css";
-import type { Post } from "../types";
-import { POSTS_PER_PAGE } from "./const";
-import { calculateTotalPages, getCurrentPosts } from "../utils/pagination";
-import { api } from "../services/api";
-import { PostsList } from "../components/posts-list/posts-list";
-import { Pagination } from "../components/pagination/pagination";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { MainPage } from "../pages/main-page/main-page";
+import { PostPage } from "../pages/post-page/post-page";
+import { NotFoundPage } from "../pages/not-found-page/not-found-page";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainPage />,
+  },
+  {
+    path: "/post/:id",
+    element: <PostPage />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
+  },
+]);
 
 function App() {
-  const [allPosts, setAllPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setLoading(true);
-        const data = await api.getPosts();
-        setAllPosts(data);
-      } catch (err) {
-        setError("Failed to load posts");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
-
-  const totalPages = calculateTotalPages(allPosts.length, POSTS_PER_PAGE);
-  const currentPosts = getCurrentPosts(allPosts, currentPage, POSTS_PER_PAGE);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <div className={styles.app}>
-      <header className={styles.header}>
-        <h1>The Daily Posts</h1>
-        <p className={styles.subtitle}>News from verified sources</p>
-      </header>
-
-      <main className={styles.main}>
-        <PostsList posts={currentPosts} loading={loading} error={error} />
-
-        {!loading && totalPages > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        )}
-      </main>
-
-      <footer className={styles.footer}>
-        <p>© 2026 The Daily Posts | All rights reserved</p>
-      </footer>
-    </div>
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   );
 }
 

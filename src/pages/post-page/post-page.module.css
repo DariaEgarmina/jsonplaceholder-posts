@@ -1,0 +1,48 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: "LatoWeb", Arial, Helvetica, sans-serif;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: #607788;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: rgb(255, 119, 17);
+}
+
+.post {
+  background: white;
+  padding: 2rem;
+  border-left: 4px solid rgb(255, 119, 17);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: rgb(44, 51, 59);
+}
+
+.body {
+  color: #607788;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: rgb(255, 119, 17);
+}

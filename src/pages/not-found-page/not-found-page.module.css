@@ -1,0 +1,32 @@
+.container {
+  text-align: center;
+  padding: 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: "LatoWeb", Arial, Helvetica, sans-serif;
+}
+
+.code {
+  font-size: 6rem;
+  color: rgb(44, 51, 59);
+  margin: 0;
+}
+
+.message {
+  font-size: 1.5rem;
+  color: #607788;
+  margin: 1rem 0 2rem;
+}
+
+.link {
+  display: inline-block;
+  color: rgb(255, 119, 17);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(255, 119, 17);
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: rgb(44, 51, 59);
+  border-bottom-color: rgb(44, 51, 59);
+}

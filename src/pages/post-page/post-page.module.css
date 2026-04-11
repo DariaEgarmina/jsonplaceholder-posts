@@ -1,3 +1,18 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: "LatoWeb", Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;

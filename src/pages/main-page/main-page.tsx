@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import styles from './main-page.module.css';
+import styles from "./main-page.module.css";
 import type { Post } from "../../types";
 import { POSTS_PER_PAGE } from "./const";
 import { calculateTotalPages, getCurrentPosts } from "../../utils/pagination";
 import { api } from "../../services/api";
 import { PostsList } from "../../components/posts-list/posts-list";
 import { Pagination } from "../../components/pagination/pagination";
+import { Header } from "../../components/header/header";
+import { Footer } from "../../components/footer/footer";
 
 export const MainPage = () => {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
@@ -43,11 +45,8 @@ export const MainPage = () => {
       <Helmet>
         <title>The Daily Posts - News from verified sources</title>
       </Helmet>
-      <div className={styles.app}>
-        <header className={styles.header}>
-          <h1>The Daily Posts</h1>
-          <p className={styles.subtitle}>News from verified sources</p>
-        </header>
+      <div className={styles.page}>
+        <Header />
 
         <main className={styles.main}>
           <PostsList posts={currentPosts} loading={loading} error={error} />
@@ -61,9 +60,7 @@ export const MainPage = () => {
           )}
         </main>
 
-        <footer className={styles.footer}>
-          <p>© 2026 The Daily Posts | All rights reserved</p>
-        </footer>
+        <Footer />
       </div>
     </>
   );

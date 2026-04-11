@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet-async";
 import styles from "./post-page.module.css";
 import type { Post } from "../../types";
 import { api } from "../../services/api";
+import { Header } from "../../components/header/header";
+import { Footer } from "../../components/footer/footer";
 
 export const PostPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -54,15 +56,23 @@ export const PostPage = () => {
         </title>
       </Helmet>
 
-      <div className={styles.container}>
-        <Link to="/" className={styles.backLink}>
-          ← Back to all posts
-        </Link>
+      <div className={styles.page}>
+        <Header />
 
-        <article className={styles.post}>
-          <h1 className={styles.title}>{post.title}</h1>
-          <p className={styles.body}>{post.body}</p>
-        </article>
+        <main className={styles.main}>
+          <div className={styles.container}>
+            <Link to="/" className={styles.backLink}>
+              ← Back to all posts
+            </Link>
+
+            <article className={styles.post}>
+              <h1 className={styles.title}>{post.title}</h1>
+              <p className={styles.body}>{post.body}</p>
+            </article>
+          </div>
+        </main>
+        
+        <Footer />
       </div>
     </>
   );

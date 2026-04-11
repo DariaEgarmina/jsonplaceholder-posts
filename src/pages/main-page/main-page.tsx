@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import styles from "./main-page.module.css";
-import type { Post } from "../../types";
+import type { Post } from "@/types";
 import { POSTS_PER_PAGE } from "./const";
-import { calculateTotalPages, getCurrentPosts } from "../../utils/pagination";
-import { api } from "../../services/api";
-import { PostsList } from "../../components/posts-list/posts-list";
-import { Pagination } from "../../components/pagination/pagination";
-import { Header } from "../../components/header/header";
-import { Footer } from "../../components/footer/footer";
+import { calculateTotalPages, getCurrentPosts } from "@/utils/pagination";
+import { api } from "@/services/api";
+import { PostsList } from "@/components/posts-list/posts-list";
+import { Pagination } from "@/components/pagination/pagination";
+import { Header } from "@/components/header/header";
+import { Footer } from "@/components/footer/footer";
 
 export const MainPage = () => {
   const [allPosts, setAllPosts] = useState<Post[]>([]);

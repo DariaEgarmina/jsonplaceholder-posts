@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { Post } from "../../types";
+import type { Post } from "@/types";
 import styles from "./post-card.module.css";
 
 type Props = {

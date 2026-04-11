@@ -1,4 +1,4 @@
-import type { Post } from "../../types";
+import type { Post } from "@/types";
 import styles from "./posts-list.module.css";
 import { PostCard } from "../post-card/post-card";
 

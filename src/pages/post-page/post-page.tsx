@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import styles from "./post-page.module.css";
-import type { Post } from "../../types";
-import { api } from "../../services/api";
-import { Header } from "../../components/header/header";
-import { Footer } from "../../components/footer/footer";
+import type { Post } from "@/types";
+import { api } from "@/services/api";
+import { Header } from "@/components/header/header";
+import { Footer } from "@/components/footer/footer";
 
 export const PostPage = () => {
   const { id } = useParams<{ id: string }>();

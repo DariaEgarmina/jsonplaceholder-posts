@@ -17,6 +17,13 @@ export const MainPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const savedPage = localStorage.getItem("currentPage");
+    if (savedPage) {
+      setCurrentPage(Number(savedPage));
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
@@ -37,6 +44,7 @@ export const MainPage = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    localStorage.setItem('currentPage', String(page));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

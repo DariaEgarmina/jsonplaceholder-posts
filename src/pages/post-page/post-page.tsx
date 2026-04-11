@@ -48,8 +48,10 @@ export const PostPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{post.title} | The Daily Posts</title>
+      <Helmet key={id}>
+        <title>
+          {post?.title ? `${post.title} | The Daily Posts` : "Loading post..."}
+        </title>
       </Helmet>
 
       <div className={styles.container}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import styles from "./main-page.module.css";
 import type { Post } from "@/types";
@@ -42,11 +42,11 @@ export const MainPage = () => {
   const totalPages = calculateTotalPages(allPosts.length, POSTS_PER_PAGE);
   const currentPosts = getCurrentPosts(allPosts, currentPage, POSTS_PER_PAGE);
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);
-    localStorage.setItem('currentPage', String(page));
+    localStorage.setItem("currentPage", String(page));
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <>

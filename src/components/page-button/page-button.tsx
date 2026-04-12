@@ -1,18 +1,23 @@
+import { memo } from "react";
 import styles from "./page-button.module.css";
 
 type Props = {
   page: number;
   isActive: boolean;
-  onClick: () => void;
+  onClick: (page: number) => void;
 };
 
-export const PageButton = ({ page, isActive, onClick }: Props) => {
+export const PageButton = memo(({ page, isActive, onClick }: Props) => {
+  const handleClick = () => {
+    onClick(page);
+  };
+
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       className={`${styles.button} ${isActive ? styles.active : ""}`}
     >
       {page}
     </button>
   );
-};
+});

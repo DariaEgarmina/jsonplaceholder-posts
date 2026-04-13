@@ -1,73 +1,30 @@
-# React + TypeScript + Vite
+# Тестовое задание для ФГБУ «Редакция «Российской газеты»
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для отображения списка постов с пагинацией и страницей отдельного поста.
 
-Currently, two official plugins are available:
+## Демо
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[Открыть приложение](https://dariaegarmina.github.io/jsonplaceholder-posts)
 
-## React Compiler
+## Репозиторий
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[DariaEgarmina/jsonplaceholder-posts](https://github.com/DariaEgarmina/jsonplaceholder-posts)
 
-## Expanding the ESLint configuration
+## Технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Vite, TypeScript, React, React Router, React Helmet Async, Axios, CSS Modules
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Запуск в режиме разработки
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+npm install
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Контакты
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Дарья Егармина  
+GitHub: [DariaEgarmina](https://github.com/DariaEgarmina)  
+Email: d.egarmina@gmail.com  
+Тел: +79652953234  
+Telegram: [@dariaegarmina](https://t.me/dariaegarmina)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Спасибо за внимание! Буду рада обратной связи 😊

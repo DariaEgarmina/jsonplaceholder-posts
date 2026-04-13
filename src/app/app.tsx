@@ -4,20 +4,25 @@ import { MainPage } from "../pages/main-page/main-page";
 import { PostPage } from "../pages/post-page/post-page";
 import { NotFoundPage } from "../pages/not-found-page/not-found-page";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <MainPage />,
+    },
+    {
+      path: "/post/:id",
+      element: <PostPage />,
+    },
+    {
+      path: "*",
+      element: <NotFoundPage />,
+    },
+  ],
   {
-    path: "/",
-    element: <MainPage />,
+    basename: "/jsonplaceholder-posts",
   },
-  {
-    path: "/post/:id",
-    element: <PostPage />,
-  },
-  {
-    path: "*",
-    element: <NotFoundPage />,
-  },
-]);
+);
 
 function App() {
   return (

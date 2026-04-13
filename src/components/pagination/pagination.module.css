@@ -1,5 +1,6 @@
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
   margin-top: 2rem;
@@ -26,4 +27,11 @@
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem;
+  }
 }

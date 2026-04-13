@@ -41,7 +41,7 @@ export const PostPage = () => {
     return (
       <div className={styles.error}>
         <p>{error || "Post not found"}</p>
-        <Link to="/" className={styles.backLink}>
+        <Link to="/" className={styles.backLink} aria-label="Go back to main page">
           Back to main page
         </Link>
       </div>
@@ -61,7 +61,7 @@ export const PostPage = () => {
 
         <main className={styles.main}>
           <div className={styles.container}>
-            <Link to="/" className={styles.backLink}>
+            <Link to="/" className={styles.backLink} aria-label="Back to all posts" >
               ← Back to all posts
             </Link>
 

@@ -16,6 +16,7 @@ export const PageButton = memo(({ page, isActive, onClick }: Props) => {
     <button
       onClick={handleClick}
       className={`${styles.button} ${isActive ? styles.active : ""}`}
+      aria-label={`Go to page ${page}`}
     >
       {page}
     </button>

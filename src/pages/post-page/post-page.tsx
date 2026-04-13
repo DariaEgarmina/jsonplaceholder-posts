@@ -50,7 +50,7 @@ export const PostPage = () => {
 
   return (
     <>
-      <Helmet key={id}>
+      <Helmet key={id}> {/* key обновляет заголовок при смене поста */}
         <title>
           {post?.title ? `${post.title} | The Daily Posts` : "Loading post..."}
         </title>

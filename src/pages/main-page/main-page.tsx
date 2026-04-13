@@ -16,6 +16,7 @@ export const MainPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [totalPages, setTotalPages] = useState(1);
 
+  // Восстанавливает страницу, на которой пользователь был до перехода на страницу поста
   useEffect(() => {
     const savedPage = localStorage.getItem("currentPage");
     if (savedPage) {
@@ -23,6 +24,8 @@ export const MainPage = () => {
     }
   }, []);
 
+  // Эффект срабатывает при смене currentPage — загружается новая порция постов.
+  // Зависимость [currentPage] гарантирует, что запрос всегда актуален.
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -44,6 +47,7 @@ export const MainPage = () => {
     fetchPosts();
   }, [currentPage]);
 
+  // Мемоизирует функцию, чтобы избежать лишних перерендеров Pagination
   const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);
     localStorage.setItem("currentPage", String(page));

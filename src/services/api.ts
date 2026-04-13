@@ -9,10 +9,8 @@ type CacheEntry = { data: PaginatedResponse; timestamp: number };
 const paginationCache = new Map<string, CacheEntry>();
 const CACHE_TTL = 5 * 60 * 1000;
 
-/**
- * Вспомогательная функция для получения постов для конкретной страницы.
- * Сначала проверяет кэш, потом идёт в API.
- */
+// Вспомогательная функция для получения постов для конкретной страницы.
+// Сначала проверяет кэш, потом идёт в API.
 const fetchPostsForPage = async (
   page: number,
   limit: number,

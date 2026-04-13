@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import styles from "./main-page.module.css";
 import type { Post } from "@/types";
 import { POSTS_PER_PAGE } from "./const";
-import { calculateTotalPages, getCurrentPosts } from "@/utils/pagination";
 import { api } from "@/services/api";
 import { PostsList } from "@/components/posts-list/posts-list";
 import { Pagination } from "@/components/pagination/pagination";
@@ -11,10 +10,11 @@ import { Header } from "@/components/header/header";
 import { Footer } from "@/components/footer/footer";
 
 export const MainPage = () => {
-  const [allPosts, setAllPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState<string | null>(null);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const savedPage = localStorage.getItem("currentPage");
@@ -27,8 +27,13 @@ export const MainPage = () => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        const data = await api.getPosts();
-        setAllPosts(data);
+        const { posts: fetchedPosts, totalCount } = await api.getPostsPage(
+          currentPage,
+          POSTS_PER_PAGE,
+        );
+        setPosts(fetchedPosts);
+        setTotalPages(Math.ceil(totalCount / POSTS_PER_PAGE));
+        setError(null);
       } catch (err) {
         setError("Failed to load posts");
         console.error(err);
@@ -37,10 +42,7 @@ export const MainPage = () => {
       }
     };
     fetchPosts();
-  }, []);
-
-  const totalPages = calculateTotalPages(allPosts.length, POSTS_PER_PAGE);
-  const currentPosts = getCurrentPosts(allPosts, currentPage, POSTS_PER_PAGE);
+  }, [currentPage]);
 
   const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);
@@ -57,7 +59,7 @@ export const MainPage = () => {
         <Header />
 
         <main className={styles.main}>
-          <PostsList posts={currentPosts} loading={loading} error={error} />
+          <PostsList posts={posts} loading={loading} error={error} />
 
           {!loading && totalPages > 1 && (
             <Pagination
